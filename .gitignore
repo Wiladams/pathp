@@ -30,3 +30,5 @@
 *.exe
 *.out
 *.app
+/testy/.vs
+/testy/pathprint/ARM64

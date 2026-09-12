@@ -1,0 +1,8 @@
+<Solution>
+  <Configurations>
+    <Platform Name="ARM64" />
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="pathprint/pathprint.vcxproj" Id="991ced54-6115-44ce-bb45-9477bd69eb0e" />
+</Solution>
