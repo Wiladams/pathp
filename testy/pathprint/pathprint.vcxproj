@@ -212,7 +212,7 @@
     </Manifest>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\pathp\lang_span.h" />
+    <ClInclude Include="..\..\pathp\mem_span.h" />
     <ClInclude Include="..\..\pathp\pathprogram.h" />
     <ClInclude Include="..\..\pathp\pathprogram_builder.h" />
     <ClInclude Include="..\..\pathp\pathprogram_exec.h" />

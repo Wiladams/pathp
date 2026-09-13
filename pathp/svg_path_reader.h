@@ -9,7 +9,7 @@
 #include <system_error>
 
 #include "svg_path_command.h"
-#include "lang_span.h"
+#include "mem_span.h"
 
 namespace waavs
 {
@@ -83,10 +83,10 @@ namespace waavs
 
 
     // ------------------------------------------------------------
-    // ByteSpan scanning helpers
+    // MemSpan scanning helpers
     // ------------------------------------------------------------
 
-    static inline void svgPath_wsp_skip(ByteSpan& s) noexcept
+    static inline void svgPath_wsp_skip(MemSpan& s) noexcept
     {
         while (!s.empty() && svgPath_isWsp(*s))
             ++s;
@@ -97,7 +97,7 @@ namespace waavs
     //
     // Consuming at most one comma is intentional. A second comma remains
     // in the input and causes the subsequent argument read to fail.
-    static inline void svgPath_sep_skip(ByteSpan& s) noexcept
+    static inline void svgPath_sep_skip(MemSpan& s) noexcept
     {
         svgPath_wsp_skip(s);
 
@@ -113,7 +113,7 @@ namespace waavs
     // SVG number parsing
     // ------------------------------------------------------------
 
-    static inline bool svgPath_number_read(ByteSpan& s, float& out) noexcept
+    static inline bool svgPath_number_read(MemSpan& s, float& out) noexcept
     {
         if (s.empty())
             return false;
@@ -162,7 +162,7 @@ namespace waavs
     }
 
 
-    static inline bool svgPath_arcFlag_read(ByteSpan& s, float& out) noexcept
+    static inline bool svgPath_arcFlag_read(MemSpan& s, float& out) noexcept
     {
         if (s.empty())
             return false;
@@ -206,7 +206,7 @@ namespace waavs
 
     struct SVGPathReader
     {
-        ByteSpan remains{};
+        MemSpan remains{};
 
         SVGPathCommand currentCommand{ SVGPathCommand::M };
         uint8_t currentArgCount{ 0 };
@@ -216,12 +216,12 @@ namespace waavs
         bool failed{ false };
 
 
-        explicit SVGPathReader(const ByteSpan& input) noexcept
+        explicit SVGPathReader(const MemSpan& input) noexcept
             : remains(input)
         {}
 
 
-        void reset(const ByteSpan& input) noexcept
+        void reset(const MemSpan& input) noexcept
         {
             remains = input;
             currentCommand = SVGPathCommand::M;
@@ -238,7 +238,7 @@ namespace waavs
         }
 
 
-        const ByteSpan& remaining() const noexcept
+        const MemSpan& remaining() const noexcept
         {
             return remains;
         }

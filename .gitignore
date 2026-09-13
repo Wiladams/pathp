@@ -32,3 +32,4 @@
 *.app
 /testy/.vs
 /testy/pathprint/ARM64
+/testy/ARM64

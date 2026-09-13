@@ -95,7 +95,7 @@ namespace waavs
             "A 25 15 30 0 1 220 230 "
             "z";
 
-        const ByteSpan input(pathData);
+        const MemSpan input(pathData);
 
 
         // ------------------------------------------------------------

@@ -18,7 +18,7 @@ namespace waavs
     // so, there are no relative commands, no implicit lineto after moveto, 
     // arcs are in endpoint form, etc.
     // ------------------------------------------------------------
-    static bool pathProgram_parse(const ByteSpan& input, PathProgram& outProg)
+    static bool pathProgram_parse(const MemSpan& input, PathProgram& outProg)
     {
         SVGPathReader reader(input);
         PathProgramBuilder builder;
