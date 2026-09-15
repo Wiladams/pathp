@@ -27,7 +27,7 @@
     <ClInclude Include="..\..\pathp\pathcommand_normalizer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\pathp\mem_span.h">
+    <ClInclude Include="..\..\pathp\memcursor.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="pathprogram_metrics.h">

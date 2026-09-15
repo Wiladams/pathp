@@ -63,7 +63,7 @@ namespace waavs
     };
 
 
-    static bool testPathProgramBuilder()
+    inline bool testPathProgramBuilder()
     {
         PathProgramBuilder builder;
 

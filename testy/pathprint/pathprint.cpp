@@ -1,5 +1,5 @@
 #include "pathprogram_builder.h"
-#include "mem_span.h"
+#include "memcursor.h"
 #include "test_pathprogram_builder.h"
 #include "test_pathprogram_parse.h"
 

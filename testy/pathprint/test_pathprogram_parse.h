@@ -67,10 +67,10 @@ namespace waavs
     };
 
 
-    static void printRawSVGCommand(SVGPathCommand cmd, const float* args, bool repeated)
+    inline void printRawSVGCommand(SVGPathCommand cmd, const float* args, bool repeated)
     {
         const uint8_t ch = static_cast<uint8_t>(cmd);
-        const uint8_t arity = kSVGPathArity[ch];
+        const uint8_t arity = svgPathCommandArity(cmd);
 
         std::printf("  %c%s", char(ch), repeated ? " (repeated)" : "");
 
@@ -81,7 +81,7 @@ namespace waavs
     }
 
 
-    static bool testPathProgramParse()
+    inline bool testPathProgramParse()
     {
         static const char* pathData =
             "M 10 20 30 40 "
@@ -95,7 +95,7 @@ namespace waavs
             "A 25 15 30 0 1 220 230 "
             "z";
 
-        const MemSpan input(pathData);
+        const MemCursor input(pathData);
 
 
         // ------------------------------------------------------------
@@ -200,10 +200,10 @@ namespace waavs
             printer.commandCount == 12;
 
         std::printf("\n");
-        std::printf("  Raw commands:        %zu\n", rawCommandCount);
-        std::printf("  Program ops:         %zu\n", prog.ops.size());
-        std::printf("  Program args:        %zu\n", prog.args.size());
-        std::printf("  Dispatched commands: %zu\n", printer.commandCount);
+        std::printf("  Raw SVG tuples:    %zu\n", rawCommandCount);
+        std::printf("  PathProgram ops:   %zu\n", prog.ops.size());
+        std::printf("  PathProgram args:  %zu\n", prog.args.size());
+        std::printf("  Dispatched ops:    %zu\n", printer.commandCount);
         std::printf("PathProgram parser/builder: %s\n", pass ? "PASS" : "FAIL");
 
         return pass;
